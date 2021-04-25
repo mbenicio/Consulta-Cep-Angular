@@ -1,0 +1,32 @@
+<section>
+  <h1>Consulta de Cep</h1>
+  <div>
+    <form>
+      <div>
+        <label for="nome">Nome</label>
+        <input type="text" name="nome"  [(ngModel)]="cliente.Nome" >
+      </div>
+      <div>
+        <label for="cpf">CPF</label>
+        <input type="text" name="cpf" [(ngModel)]="cliente.CPF">
+      </div>
+      <div>
+        <label for="cep">CEP</label>
+        <input type="text" name="cep" placeholder="00000-000" [(ngModel)]="cliente.CEP" (blur)="consultaCEP()" >
+      </div>
+      <div>
+        <label for="endereco">Endereço</label>
+        <input type="text" name="endereco" [(ngModel)]="cliente.Endereco" >
+      </div>
+      <div *ngIf="!cliente.CPFValido()" id="cpfInvalido">
+        *CPF informado é Inválido
+      </div>
+      <div>
+        <button (click)="salvar()" value="Salvar" [disabled]="!cliente.CPFValido()" >Salvar</button>
+      </div>
+     
+    </form>
+  </div>
+</section>
+
+<router-outlet></router-outlet>
